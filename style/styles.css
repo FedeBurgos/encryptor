@@ -1,0 +1,132 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f7fb;
+    color: #333;
+    height: 100%;
+}
+
+/* Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+}
+
+.logo {
+    font-size: 48px;
+    color: #073763;
+}
+
+/* Main Sections */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px;
+}
+
+.text-area-section {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+textarea {
+    width: 48%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #d3d3d3;
+    font-size: 18px;
+    resize: none;
+    height: 150px;
+}
+
+textarea#outputText {
+    background-color: #e9ecef;
+}
+
+.button-section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #d3d3d3;
+    outline: none;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+#encryptButton {
+    background-color: #073763;
+    color: white;
+}
+
+#decryptButton {
+    background-color: #f5f7fb;
+    color: #073763;
+    border: 1px solid #073763;
+}
+
+#copyButton {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        padding: 20px;
+    }
+
+    .text-area-section {
+        flex-direction: column;
+    }
+
+    textarea {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    button {
+        flex: 1;
+        margin: 5px;
+    }
+
+    .button-section {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    textarea {
+        font-size: 16px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
