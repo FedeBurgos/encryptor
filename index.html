@@ -2,30 +2,39 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Encriptador</title>
+    <title>Encriptador/Desencriptador</title>
     <link rel="stylesheet" href="/style/styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">
-                <img src="/assets/Logo.png" alt="Logo de Alura">
+    <header>
+        <img class="logo" src="/assets/Logo.png" alt="Logo de Alura">
+    </header>
+    <div class="main-container">
+        <div class="input-section">
+            <textarea id="input-text" placeholder="Ingrese el texto aquí"></textarea>
+            <div class="note">
+                <span class="warning-symbol">⚠</span>
+                Solo letras minúsculas y sin acentos
             </div>
-        </header>
-        <main>
-            <div class="text-area-section">
-                <textarea id="inputText" placeholder="Ingrese el texto aquí"></textarea>
-                <textarea id="outputText" readonly></textarea>
+            <div class="button-group">
+                <button class="button-enc" id="encrypt-btn">Encriptar</button>
+                <button class="button-desenc" id="decrypt-btn">Desencriptar</button>
             </div>
-            <div class="button-section">
-                <button id="encryptButton">Encriptar</button>
-                <button id="decryptButton">Desencriptar</button>
-                <button id="copyButton">Copiar</button>
+        </div>
+        <div class="output-section">
+            <textarea id="output-text" ></textarea>
+            <button class="button-enc" id="copy-btn">Copiar</button>
+            <div id="placeholder" class="image-container">
+                <img src="/assets/Muñeco.png" alt="Caricatura de una persona mirando con una lupa" id="placeholder-image">
+                <p style="color: #474744;">Ningún mensaje fue encontrado<br>Ingresa el texto que desees encriptar o desencriptar.</p>
             </div>
-            <p><small>Solo letras minúsculas y sin acentos</small></p>
-        </main>
+        </div>
     </div>
+    <footer>
+        Creado por Federico Ezequiel Burgos
+    </footer>
     <script src="app.js"></script>
 </body>
 </html>

@@ -1,54 +1,75 @@
-// Función para encriptar el texto
-function encrypt(message) {
-    return message.replace(/a|e|i|o|u/g, (match) => {
-        switch (match) {
-            case 'e': return 'enter';
-            case 'i': return 'imes';
-            case 'a': return 'ai';
-            case 'o': return 'ober';
-            case 'u': return 'ufat';
-            default: return match;
-        }
-    });
-}
-
-// Función para desencriptar el texto
-function decrypt(message) {
-    return message.replace(/enter|imes|ai|ober|ufat/g, (match) => {
-        switch (match) {
-            case 'enter': return 'e';
-            case 'imes': return 'i';
-            case 'ai': return 'a';
-            case 'ober': return 'o';
-            case 'ufat': return 'u';
-            default: return match;
-        }
-    });
-}
-
-// Limpiar el contenido al cargar la página o actualizarla
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('inputText').value = '';
-    document.getElementById('outputText').value = '';
-});
+    const inputText = document.getElementById('input-text');
+    const outputText = document.getElementById('output-text');
+    const encryptBtn = document.getElementById('encrypt-btn');
+    const decryptBtn = document.getElementById('decrypt-btn');
+    const copyBtn = document.getElementById('copy-btn');
+    const placeholder = document.getElementById('placeholder');
 
-// Evento para manejar el clic en el botón de encriptar
-document.getElementById('encryptButton').addEventListener('click', function() {
-    const inputText = document.getElementById('inputText').value;
-    const encryptedMessage = encrypt(inputText);
-    document.getElementById('outputText').value = encryptedMessage;
-});
+    function encrypt(message) {
+        return message.replace(/a|e|i|o|u/g, (match) => {
+            switch (match) {
+                case 'e': return 'enter';
+                case 'i': return 'imes';
+                case 'a': return 'ai';
+                case 'o': return 'ober';
+                case 'u': return 'ufat';
+                default: return match;
+            }
+        });
+    }
 
-// Evento para manejar el clic en el botón de desencriptar
-document.getElementById('decryptButton').addEventListener('click', function() {
-    const inputText = document.getElementById('inputText').value;
-    const decryptedMessage = decrypt(inputText);
-    document.getElementById('outputText').value = decryptedMessage;
-});
+    function decrypt(message) {
+        return message.replace(/enter|imes|ai|ober|ufat/g, (match) => {
+            switch (match) {
+                case 'enter': return 'e';
+                case 'imes': return 'i';
+                case 'ai': return 'a';
+                case 'ober': return 'o';
+                case 'ufat': return 'u';
+                default: return match;
+            }
+        });
+    }
 
-// Evento para manejar el clic en el botón de copiar
-document.getElementById('copyButton').addEventListener('click', function() {
-    const outputText = document.getElementById('outputText');
-    outputText.select();
-    document.execCommand('copy');
+    encryptBtn.addEventListener('click', () => {
+        const text = inputText.value.trim();
+        if (text) {
+            outputText.value = encrypt(text);
+            placeholder.style.display = 'none';
+            outputText.style.display = 'block';
+            copyBtn.style.display = 'block';
+        } else {
+            placeholder.style.display = 'flex';
+            outputText.style.display = 'none';
+            copyBtn.style.display = 'none';
+        }
+    });
+
+    decryptBtn.addEventListener('click', () => {
+        const text = inputText.value.trim();
+        if (text) {
+            outputText.value = decrypt(text);
+            placeholder.style.display = 'none';
+            outputText.style.display = 'block';
+            copyBtn.style.display = 'block';
+        } else {
+            placeholder.style.display = 'flex';
+            outputText.style.display = 'none';
+            copyBtn.style.display = 'none';
+        }
+    });
+
+    document.getElementById('copy-btn').addEventListener('click', function() {
+        const outputText = document.getElementById('output-text');
+        outputText.select();
+        document.execCommand('copy');
+    });    
+
+    // Reset view on page load
+    inputText.value = '';
+    outputText.value = '';
+    placeholder.style.display = 'flex';
+    outputText.style.display = 'none';
+    copyBtn.style.display = 'none';
 });
